@@ -11,7 +11,8 @@
     <RootNamespace>ColorMeCode.AppDomainHost</RootNamespace>
     <AssemblyName>ColorMeCode.AppDomainHost</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -34,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ingeniare.CmdParser">
+      <HintPath>..\Libraries\Ingeniare.CmdParser.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,10 +51,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Ninjineer.AppDomainHost.Core\Ninjineer.AppDomainHost.Core.csproj">
+    <ProjectReference Include="..\ColorMeCode.AppDomainHost.Core\ColorMeCode.AppDomainHost.Core.csproj">
       <Project>{EB997430-796B-4A60-AFDD-17CBAD6CADCB}</Project>
       <Name>Ninjineer.AppDomainHost.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

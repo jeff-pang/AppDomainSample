@@ -2,23 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Ingeniare.CmdParser;
+using ColorMeCode.AppDomainHost.Core.Commands;
 
 namespace ColorMeCode.AppDomainHost
 {
     class Program
     {
         static void Main(string[] args)
-        {
+        {                
+            CommandManager.LoadCommand(new NewDomainCommand());
             string cmd="";
             do
             {
-                cmd = Console.ReadLine();
+                Console.WriteLine("'exit' to exit");
+
+                cmd=Console.ReadLine();
                 cmd = cmd.Trim().ToLower();
-                
-                if (cmd == "new")
-                {
-                    AppDomain.CreateDomain("");    
-                }
+                CommandManager.HandleCommandLine(cmd);
 
             } while (cmd != "exit");
         }

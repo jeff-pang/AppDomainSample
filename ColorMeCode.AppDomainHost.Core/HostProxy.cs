@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.Remoting;
 
 namespace ColorMeCode.AppDomainHost.Core
 {
     public class HostProxy:MarshalByRefObject,IDisposable
     {
+        bool _disposed;
         public void WheraAmI()
         {
             Console.WriteLine(AppDomain.CurrentDomain.FriendlyName);
@@ -35,9 +37,23 @@ namespace ColorMeCode.AppDomainHost.Core
             }
         }
 
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_disposed)
+                return;
+
+            RemotingServices.Disconnect(this);
+            _disposed = true;
+        }
+        
+        ~HostProxy()
+        {
+            Dispose(false);
+        }
         public void Dispose()
         {
-            throw new NotImplementedException();
+            GC.SuppressFinalize(this);
+            Dispose(true);
         }
     }
 }
