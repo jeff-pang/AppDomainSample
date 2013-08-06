@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\NewDomainCommand.cs" />
+    <Compile Include="ChildProxy.cs" />
     <Compile Include="HostProxy.cs" />
     <Compile Include="Controllers\AppDomainController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

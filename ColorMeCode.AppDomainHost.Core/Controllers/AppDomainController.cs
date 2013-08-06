@@ -8,7 +8,7 @@ namespace ColorMeCode.AppDomainHost.Core.Controllers
     public class AppDomainController
     {
         static Dictionary<string, AppDomain> _domains;
-        
+        HostProxy _hostProxy;
         static AppDomainController _instance;
         public static AppDomainController Instance
         {
@@ -26,6 +26,7 @@ namespace ColorMeCode.AppDomainHost.Core.Controllers
         private AppDomainController()
         {
             _domains = new Dictionary<string, AppDomain>();
+            _hostProxy = new HostProxy();
         }
 
         public AppDomain CreateAppDomain(string name)
