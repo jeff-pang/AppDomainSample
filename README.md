@@ -1,4 +1,4 @@
 AppDomainSample
 ===============
 
-Sample Code to accompany http://www.ninjineer.net/blog/working-with-appdomain
+Sample Code to accompany http://www.colormecode.com/blog/working-with-appdomain
