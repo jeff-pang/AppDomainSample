@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ninjineer.AppDomainHost", "Ninjineer.AppDomainHost\Ninjineer.AppDomainHost.csproj", "{D0071DC5-2A32-4190-94B6-5EE437ACFE41}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorMeCode.AppDomainHost", "ColorMeCode.AppDomainHost\ColorMeCode.AppDomainHost.csproj", "{D0071DC5-2A32-4190-94B6-5EE437ACFE41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ninjineer.AppDomainHost.Core", "Ninjineer.AppDomainHost.Core\Ninjineer.AppDomainHost.Core.csproj", "{EB997430-796B-4A60-AFDD-17CBAD6CADCB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorMeCode.AppDomainHost.Core", "ColorMeCode.AppDomainHost.Core\ColorMeCode.AppDomainHost.Core.csproj", "{EB997430-796B-4A60-AFDD-17CBAD6CADCB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

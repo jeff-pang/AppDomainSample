@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Ninjineer.AppDomainHost.Core.Controllers;
 
-namespace Ninjineer.AppDomainHost
+namespace ColorMeCode.AppDomainHost
 {
     class Program
     {

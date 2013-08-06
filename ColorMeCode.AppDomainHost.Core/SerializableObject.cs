@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Ninjineer.AppDomainHost.Core
+namespace ColorMeCode.AppDomainHost.Core
 {
     public class SerializableObject
     {

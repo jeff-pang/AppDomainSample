@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Ninjineer.AppDomainHost.Core
+namespace ColorMeCode.AppDomainHost.Core
 {
     public class HostProxy:MarshalByRefObject,IDisposable
     {
         public void WheraAmI()
         {
+            Console.WriteLine(AppDomain.CurrentDomain.FriendlyName);
+        }
+
+        public override object InitializeLifetimeService()
+        {
+            return null;
         }
 
         SerializableObject _obj;
@@ -27,6 +33,11 @@ namespace Ninjineer.AppDomainHost.Core
             {
                 Console.WriteLine("Object is not set");
             }
+        }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
         }
     }
 }
