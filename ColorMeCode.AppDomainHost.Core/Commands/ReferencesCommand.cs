@@ -7,20 +7,20 @@ using ColorMeCode.AppDomainHost.Core.Controllers;
 
 namespace ColorMeCode.AppDomainHost.Core.Commands
 {
-    public class NewDomainCommand:Command
+    public class ReferencesCommand:Command
     {
         public override string GetCommandName()
         {
-            return "newdomain";
+            return "ref";
         }
 
         protected override bool execute(CommandArguments arguments, StringBuilder output)
         {
-            if (arguments.Command == "newdomain" && arguments.Count == 1 && arguments[0].Values.Length==1)
+            if (arguments.ContainsParameter("show"))
             {
-                AppDomainController.Instance.CreateAppDomain(arguments[0].Values[0]);
+                AppDomainController.Instance.ShowRef(arguments["show"].Values[0]);
             }
-            
+
             return true;
         }
     }

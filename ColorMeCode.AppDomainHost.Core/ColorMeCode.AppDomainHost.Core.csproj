@@ -43,13 +43,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\NewDomainCommand.cs" />
-    <Compile Include="ChildProxy.cs" />
-    <Compile Include="HostProxy.cs" />
+    <Compile Include="ReferencedObject.cs" />
+    <Compile Include="Utilities\AutoCounter.cs" />
+    <Compile Include="Utilities\ColoredOutput.cs" />
+    <Compile Include="Commands\ReferencesCommand.cs" />
+    <Compile Include="Commands\VariablesCommand.cs" />
+    <Compile Include="Commands\DomainCommand.cs" />
+    <Compile Include="Proxies\ChildProxy.cs" />
+    <Compile Include="NonSerializableObject.cs" />
     <Compile Include="Controllers\AppDomainController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SerializableObject.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

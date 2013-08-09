@@ -5,8 +5,7 @@ using System.Text;
 
 namespace ColorMeCode.AppDomainHost.Core
 {
-    [Serializable]
-    public class SerializableObject
+    public class NonSerializableObject
     {
         public string Value { get; set; }
     }

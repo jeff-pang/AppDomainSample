@@ -10,13 +10,16 @@ namespace ColorMeCode.AppDomainHost
     class Program
     {
         static void Main(string[] args)
-        {                
-            CommandManager.LoadCommand(new NewDomainCommand());
+        {
+            CommandManager.LoadCommand(new DomainCommand());
+            CommandManager.LoadCommand(new VariablesCommand());
+            CommandManager.LoadCommand(new ReferencesCommand());
+            
+            Console.WriteLine("'exit' to exit");
             string cmd="";
             do
             {
-                Console.WriteLine("'exit' to exit");
-
+                Console.Write(">");
                 cmd=Console.ReadLine();
                 cmd = cmd.Trim().ToLower();
                 CommandManager.HandleCommandLine(cmd);
