@@ -127,6 +127,7 @@ namespace ColorMeCode.AppDomainHost.Core.Controllers
             if (_childProxies.ContainsKey(domainName))
             {
                 _serialisedObjects[domainName] = _childProxies[domainName].GetSerializableObject();
+                Console.WriteLine("Domain {0} SerializableObject Value {1}", AppDomain.CurrentDomain.FriendlyName, _serialisedObjects[domainName].Value);
             }
             else
             {
