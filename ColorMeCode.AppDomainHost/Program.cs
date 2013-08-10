@@ -14,12 +14,12 @@ namespace ColorMeCode.AppDomainHost
             CommandManager.LoadCommand(new DomainCommand());
             CommandManager.LoadCommand(new VariablesCommand());
             CommandManager.LoadCommand(new ReferencesCommand());
-            
+                        
             Console.WriteLine("'exit' to exit");
+            Console.WriteLine();
             string cmd="";
             do
             {
-                Console.Write(">");
                 cmd=Console.ReadLine();
                 cmd = cmd.Trim().ToLower();
                 CommandManager.HandleCommandLine(cmd);

@@ -20,7 +20,10 @@ namespace ColorMeCode.AppDomainHost.Core.Commands
             {
                 AppDomainController.Instance.ShowRef(arguments["show"].Values[0]);
             }
-
+            else if (arguments.ContainsParameter("set") && arguments.ContainsParameter("value"))
+            {
+                AppDomainController.Instance.SetRef(arguments["set"].Values[0],arguments["value"].Values[0]);
+            }
             return true;
         }
     }

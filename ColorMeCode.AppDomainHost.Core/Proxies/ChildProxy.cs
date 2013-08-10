@@ -10,7 +10,6 @@ namespace ColorMeCode.AppDomainHost.Core.Proxies
     public class ChildProxy:MarshalByRefObject,IDisposable
     {
         bool _disposed; 
-        AutoCounter _counter;
         ReferencedObject _referencedObject;
         SerializableObject _serializableObject;
         NonSerializableObject _nonSerializableObject;
@@ -26,27 +25,9 @@ namespace ColorMeCode.AppDomainHost.Core.Proxies
         {
             return AppDomain.CurrentDomain.FriendlyName;
         }
-
-        public void StartAutoCounter()
-        {
-            if (_counter == null)
-            {
-                _counter = new AutoCounter();
-                _counter.Elapsed = new Action<int>(Elapsed);
-            }
-            _counter.Start();
-        }
-
-        private void Elapsed(int i)
-        {
-            _referencedObject.Value = i.ToString();
-            _serializableObject.Value = i.ToString();
-            _nonSerializableObject.Value = i.ToString();
-        }
         
         public void SetConsoleColor(int color)
         {
-            Console.ForegroundColor = (ConsoleColor)color;
             ColoredOutput coloredOutput = new ColoredOutput(color);
             Console.SetOut(coloredOutput);
         }
@@ -56,26 +37,39 @@ namespace ColorMeCode.AppDomainHost.Core.Proxies
             return _referencedObject;
         }
 
+        public void SetReferencedObject(string value)
+        {
+            _referencedObject.Value = value;
+            ShowReferencedObject();
+        }
+
+        public void ShowReferencedObject()
+        {
+            Console.WriteLine("Domain {0} ReferencedObject Value {1}", AppDomain.CurrentDomain.FriendlyName, _referencedObject.Value);
+        }
+
         public SerializableObject GetSerializableObject()
         {
             return _serializableObject;
         }
+        
+        public void SetSerializableObject(string value)
+        {
+            _serializableObject.Value=value;
+            ShowSerializableObject();
+        }
 
+        public void ShowSerializableObject()
+        {
+            Console.WriteLine("Domain {0} SerializableObject Value {1}", AppDomain.CurrentDomain.FriendlyName, _serializableObject.Value);
+        }
+        
         public NonSerializableObject GetNonSerializableObject()
         {
             return _nonSerializableObject;
         }
 
-        public void ShowReferencedObject()
-        {
-            Console.WriteLine("Domain {0} Ref. Value {1}",AppDomain.CurrentDomain.FriendlyName,_referencedObject.Value);
-        }
 
-        public void ShowSerializableObject()
-        {
-            Console.WriteLine("Domain {0} Ser. Value {1}", AppDomain.CurrentDomain.FriendlyName, _referencedObject.Value);
-        }
-        
         public override object InitializeLifetimeService()
         {
             return null;

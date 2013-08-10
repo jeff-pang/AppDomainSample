@@ -24,6 +24,10 @@ namespace ColorMeCode.AppDomainHost.Core.Commands
             {
                 AppDomainController.Instance.ShowVar(arguments["show"].Values[0]);
             }
+            else if (arguments.ContainsParameter("set") && arguments.ContainsParameter("value"))
+            {
+                AppDomainController.Instance.SetVar(arguments["set"].Values[0], arguments["value"].Values[0]);
+            }
             else if(arguments.ContainsParameter("tryget"))
             {
                 AppDomainController.Instance.TryGetNonSerializable(arguments["tryget"].Values[0]);

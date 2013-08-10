@@ -33,7 +33,7 @@ namespace ColorMeCode.AppDomainHost.Core.Controllers
         private AppDomainController()
         {
             _domains = new Dictionary<string, AppDomain>();            
-            _consoleColors=new Stack<int>(new int[]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15});
+            _consoleColors=new Stack<int>(new int[]{14,13,12,11,10,9});
             _referencedObjects = new Dictionary<string, ReferencedObject>();
             _serialisedObjects = new Dictionary<string, SerializableObject>();
             _childProxies = new Dictionary<string, ChildProxy>();
@@ -56,12 +56,11 @@ namespace ColorMeCode.AppDomainHost.Core.Controllers
                 _serialisedObjects[domainName] = _childProxies[domainName].GetSerializableObject();
                 if (_consoleColors.Count == 0)
                 {
-                    _consoleColors = new Stack<int>(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 });
+                    _consoleColors = new Stack<int>(new int[] {14, 13, 12, 11, 10, 9 });
                 }
 
                 int consoleCol=_consoleColors.Pop();
                 cp.SetConsoleColor(consoleCol);
-                cp.StartAutoCounter();
 
                 return domain;
             }
@@ -96,7 +95,33 @@ namespace ColorMeCode.AppDomainHost.Core.Controllers
                 return null;
             }
         }
-        
+
+
+        public void ShowVar(string domainName)
+        {
+            if (_childProxies.ContainsKey(domainName))
+            {
+                Console.WriteLine("Domain {0} SerializableObject Value {1}", AppDomain.CurrentDomain.FriendlyName, _serialisedObjects[domainName].Value);
+                _childProxies[domainName].ShowSerializableObject();
+            }
+            else
+            {
+                Console.WriteLine("Child domain {0} does not exist", domainName);
+            }
+        }
+        internal void SetVar(string domainName, string value)
+        {
+
+            if (_childProxies.ContainsKey(domainName))
+            {
+                _childProxies[domainName].SetSerializableObject(value);
+            }
+            else
+            {
+                Console.WriteLine("Child domain {0} does not exist", domainName);
+            }
+        }
+
         public void RefreshVar(string domainName)
         {
             if (_childProxies.ContainsKey(domainName))
@@ -108,26 +133,25 @@ namespace ColorMeCode.AppDomainHost.Core.Controllers
                 Console.WriteLine("Child domain {0} does not exist", domainName);
             }
         }
-
-        public void ShowVar(string domainName)
+        
+        public void ShowRef(string domainName)
         {
             if (_childProxies.ContainsKey(domainName))
             {
-                Console.WriteLine("Domain {0} Ser. Value {1}", AppDomain.CurrentDomain.FriendlyName,_serialisedObjects[domainName].Value);
-                _childProxies[domainName].ShowSerializableObject();
+                Console.WriteLine("Domain {0} ReferencedObject Value {1}", AppDomain.CurrentDomain.FriendlyName,_referencedObjects[domainName].Value);
+                _childProxies[domainName].ShowReferencedObject();
             }
             else
             {
                 Console.WriteLine("Child domain {0} does not exist", domainName);
             }
         }
-        
-        public void ShowRef(string domainName)
+
+        internal void SetRef(string domainName, string value)
         {
             if (_childProxies.ContainsKey(domainName))
             {
-                Console.WriteLine("Domain {0} Ref. Value {1}", AppDomain.CurrentDomain.FriendlyName,_referencedObjects[domainName].Value);
-                _childProxies[domainName].ShowReferencedObject();
+                _childProxies[domainName].SetReferencedObject(value);
             }
             else
             {
@@ -155,5 +179,6 @@ namespace ColorMeCode.AppDomainHost.Core.Controllers
                 Console.WriteLine("Child domain {0} does not exist", domainName);
             }
         }
+
     }
 }

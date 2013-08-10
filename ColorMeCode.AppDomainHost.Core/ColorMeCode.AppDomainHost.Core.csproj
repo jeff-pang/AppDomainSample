@@ -44,7 +44,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ReferencedObject.cs" />
-    <Compile Include="Utilities\AutoCounter.cs" />
     <Compile Include="Utilities\ColoredOutput.cs" />
     <Compile Include="Commands\ReferencesCommand.cs" />
     <Compile Include="Commands\VariablesCommand.cs" />
